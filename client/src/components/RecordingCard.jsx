@@ -18,7 +18,7 @@ function RecordingCard() {
   return () => clearInterval(interval);
 }, [isRecording]);
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-8">
+    <div className="bg-white rounded-2xl shadow-lg p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold">
           🎤 Live Recording
