@@ -2,29 +2,30 @@ require("dotenv").config();
 
 const express = require("express");
 const notesRoutes = require("./routes/notes");
+const askRoutes = require("./routes/ask");
+const flashcardsRoutes = require("./routes/flashcards");
+const quizRoutes = require("./routes/quiz");
 
 const app = express();
 
 app.use(express.json());
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
-/*
-    Root Route
-
-    Used only to verify that the backend
-    server is running successfully.
-*/
 app.get("/", (req, res) => {
     res.send("Welcome to Noteable Backend 🚀");
 });
 
-/*
-    Notes Route
-
-    Handles all note-generation requests.
-*/
 app.use("/notes", notesRoutes);
+app.use("/ask", askRoutes);
+app.use("/flashcards", flashcardsRoutes);
+app.use("/quiz", quizRoutes);
+
+app.post("/test", (req, res) => {
+    res.json({
+        message: "Test route works!"
+    });
+});
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);

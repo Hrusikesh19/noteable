@@ -12,16 +12,18 @@
 const notesPrompt = (transcript) => `
 You are an expert note-taking assistant.
 
-Convert the following lecture transcript into well-structured study notes.
+Convert the following lecture transcript into clean, well-organized study notes.
 
-Rules:
-- Use proper headings and subheadings.
+Instructions:
+- Use clear headings and subheadings.
 - Use bullet points where appropriate.
-- Keep the notes concise but complete.
-- Highlight important keywords in bold.
-- If definitions exist, write them clearly.
-- If formulas or steps are mentioned, preserve them.
-- End with a short summary.
+- Explain concepts in simple language.
+- Highlight important keywords using **bold**.
+- Include definitions if mentioned.
+- Preserve formulas, equations, or numbered steps.
+- Remove filler words or repeated sentences.
+- End with a short "Summary" section.
+- Do not invent information that is not present in the transcript.
 
 Lecture Transcript:
 

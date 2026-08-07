@@ -1,5 +1,5 @@
 const ai = require("../config/gemini");
-const notesPrompt = require("../prompts/notesPrompt");
+const flashcardsPrompt = require("../prompts/flashcardsPrompt");
 const askQuestion = async (req, res) => {
     try {
 
@@ -28,7 +28,7 @@ const askQuestion = async (req, res) => {
 
     } catch (error) {
 
-         console.error("Gemini Error:", error);
+        console.error("Gemini Error:", error);
 
         res.status(500).json({
             error: "Failed to answer the question."
@@ -39,7 +39,7 @@ const askQuestion = async (req, res) => {
 
 module.exports = askQuestion;
 
-const generateNotes = async (req, res) => {
+const generateFlashcards = async (req, res) => {
     try {
 
         const { transcript } = req.body;
@@ -51,12 +51,12 @@ const generateNotes = async (req, res) => {
         }
 
         const response = await ai.models.generateContent({
-            model: "models/gemini-3.5-flash-lite",
-            contents: notesPrompt(transcript),
+       model: "models/gemini-3.5-flash-lite",
+            contents: flashcardsPrompt(transcript),
         });
 
         res.json({
-            notes: response.text,
+            flashcards: response.text
         });
 
     } catch (error) {
@@ -68,10 +68,10 @@ console.error("STATUS:", error.status);
 console.error("RESPONSE:", error.response);
 
         res.status(500).json({
-            error: "Failed to generate notes."
+            error: "Failed to generate flashcards."
         });
 
     }
 };
 
-module.exports = generateNotes;
+module.exports = generateFlashcards;
